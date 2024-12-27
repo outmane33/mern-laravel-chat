@@ -18,7 +18,7 @@ export default function Sidebar() {
     }, [getUsers]);
 
     const filteredUsers = showOnlineOnly
-        ? users.filter((user) => onlineUsers.includes(user.id))
+        ? users.filter((user) => onlineUsers.includes(user.id.toString()))
         : users;
 
     if (isUsersLoading) return <SidebarSkeleton />;
@@ -46,7 +46,7 @@ export default function Sidebar() {
                         <span className="text-sm">Show online only</span>
                     </label>
                     <span className="text-xs text-zinc-500">
-                        ({onlineUsers.length} online)
+                        ({onlineUsers.length - 1} online)
                     </span>
                 </div>
             </div>
@@ -76,9 +76,6 @@ export default function Sidebar() {
                                 className="size-12 object-cover rounded-full"
                             />
                             {/* {console.log(onlineUsers)} */}
-                            {console.log(
-                                onlineUsers.includes(user.id.toString())
-                            )}
                             {onlineUsers.includes(user.id.toString()) && (
                                 <span
                                     className="absolute bottom-0 right-0 size-3 bg-green-500 
@@ -93,7 +90,7 @@ export default function Sidebar() {
                                 {user.full_name}
                             </div>
                             <div className="text-sm text-zinc-400">
-                                {onlineUsers?.includes(user.id) ? (
+                                {onlineUsers?.includes(user.id.toString()) ? (
                                     <span className="text-green-500">
                                         Online
                                     </span>

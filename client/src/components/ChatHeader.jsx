@@ -26,7 +26,7 @@ export default function ChatHeader() {
                             {selectedUser.full_name}
                         </h3>
                         <p className="text-sm text-base-content/70">
-                            {onlineUsers.includes(selectedUser.id)
+                            {onlineUsers.includes(selectedUser.id.toString())
                                 ? "Online"
                                 : "Offline"}
                         </p>
